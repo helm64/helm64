@@ -1,0 +1,15 @@
+# ** ACTION REQUIRED: rename this file to devhl-set where ALIAS is a short id for your project. Remove this line when done**
+#!/usr/bin/env bash
+#
+# Update dev-time external tools
+#
+# * Use to download or install external tools, libraries, etc
+# * Tools and libs should go to lib/
+# * Do not include operations that requires privileged access (i.e. sudo)
+# * Template Version: v1.0.0
+#
+
+# shellcheck source=SCRIPTDIR/devhl-set
+source ./bin/devhl-set || exit 1
+
+# Add update commands

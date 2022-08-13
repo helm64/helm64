@@ -1,0 +1,34 @@
+# ** ACTION REQUIRED: rename this file to devhl-set where ALIAS is a short id for your project. Remove this line when done**
+#!/bin/sh
+#
+# Set development environment variables
+#
+# * Source this script from the project's root directory
+# * Template Version: v1.1.0
+#
+
+test -f ./.env
+if test $? -ne 0; then
+  echo "Error: source this file from the project's root directory" && return 1
+fi
+
+# shellcheck disable=SC2154
+if test -f ./.local; then
+  echo 'Load local environment variables'
+  # shellcheck source=SCRIPTDIR/../.local
+  . ./.local || return 1
+elif test -n "$GITHUB_WORKSPACE"; then
+  echo 'Load GitHub environment variables'
+  # shellcheck disable=SC2155
+  export DEVHL_ROOT="$GITHUB_WORKSPACE"
+fi
+
+if test -f ./.secrets; then
+  echo 'Load local secrets'
+  # shellcheck source=SCRIPTDIR/../.secrets
+  . ./.secrets || return 1
+fi
+
+echo 'Load project environment variables'
+# shellcheck source=SCRIPTDIR/../.env
+. ./.env || return 1
