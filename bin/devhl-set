@@ -1,4 +1,3 @@
-# ** ACTION REQUIRED: rename this file to devhl-set where ALIAS is a short id for your project. Remove this line when done**
 #!/bin/sh
 #
 # Set development environment variables
