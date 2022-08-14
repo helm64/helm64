@@ -18,7 +18,7 @@
 
 ## Overview
 
-Collection of Helm charts for infrastructure management
+Collection of Helm charts for infrastructure management.
 
 ## Repositories
 
