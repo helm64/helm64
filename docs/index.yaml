@@ -1,0 +1,35 @@
+apiVersion: v1
+entries:
+  helm64-toolbox:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-08-14T11:11:51.915762061-03:00"
+    dependencies:
+    - condition: toolboxOSEnabled
+      name: helm64-toolbox-os
+      repository: ""
+    - condition: toolboxPSQL13Enabled
+      name: helm64-toolbox-psql-13
+      repository: ""
+    - condition: toolboxMongoSH5Enabled
+      name: helm64-toolbox-mongosh-5
+      repository: ""
+    - condition: toolboxMongoSH6Enabled
+      name: helm64-toolbox-mongosh-6
+      repository: ""
+    description: SysAdmin Toolbox
+    digest: 1a96c51b3c76ccd4c5575ae67e519079b40329d017c063d152185bd2a5411983
+    home: https://github.com/serdigital64/helm64
+    keywords:
+    - toolbox
+    maintainers:
+    - name: SerDigital64
+      url: https://github.com/serdigital64
+    name: helm64-toolbox
+    sources:
+    - https://github.com/helm64/helm64-toolbox
+    type: application
+    urls:
+    - https://github.com/serdigital64/helm64/releases/download/helm64-toolbox-0.1.0/helm64-toolbox-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-08-14T11:11:51.915786686-03:00"
