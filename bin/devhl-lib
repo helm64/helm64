@@ -1,4 +1,3 @@
-# ** ACTION REQUIRED: rename this file to devhl-set where ALIAS is a short id for your project. Remove this line when done**
 #!/usr/bin/env bash
 #
 # Update dev-time external tools
@@ -13,3 +12,6 @@
 source ./bin/devhl-set || exit 1
 
 # Add update commands
+echo 'Download bash library: BashLib64'
+cd "$DEVHL_LIB" &&
+  curl -O https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash || exit 1

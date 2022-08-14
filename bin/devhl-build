@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# Build chart packages
+#
+
+# shellcheck source=SCRIPTDIR/devhl-set
+source ./bin/devhl-set || exit 1
+# shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
+source "$DEVHL_BASHLIB64" || exit 1
+
+declare source=''
+declare cr_bin='/opt/helm/bin/cr'
+
+bl64_msg_all_enable_verbose
+bl64_hlm_setup || exit $?
+# shellcheck disable=SC2154
+bl64_msg_show_task "Build packages from source (${DEVHL_SRC})"
+
+for source in $(cd ${DEVHL_SRC}; echo *); do
+  bl64_msg_show_task "package chart (${source})"
+  bl64_hlm_run_helm package "${DEVHL_SRC}/${source}" --destination "$DEVHL_BUILD"
+done
