@@ -9,5 +9,5 @@
 #
 
 # Project base location. Adjust to your local GIT repo
-DEVHL_ROOT="${HOME}/X_PROJECT_REPO_NAME_X"
+DEVHL_ROOT="${HOME}/github/helm64"
 export DEVHL_ROOT
