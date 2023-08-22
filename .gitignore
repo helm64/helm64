@@ -29,3 +29,5 @@ lib/*
 #
 # Project specific exclusions
 #
+
+src/*

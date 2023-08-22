@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Upload package releases to github
+# Upload helm package to repository and create release
 #
 
 # shellcheck source=SCRIPTDIR/devhl-set
@@ -8,13 +8,10 @@ source ./bin/dev-set || exit 1
 # shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
 source "$DEVHL_CICD_BASHLIB64" || exit 1
 
-declare cr_bin='/opt/helm/bin/cr'
-
 bl64_msg_all_enable_verbose
-bl64_msg_show_task "update package repository (${DEVHL_DOCS})"
-"$cr_bin" index \
+bl64_msg_show_task "upload new releases to github (${DEVHL_CR_REPO})"
+"$DEVHL_CICD_BIN_CR" upload \
   --git-repo "$DEVHL_CR_REPO" \
   --owner "$DEVHL_CR_OWNER" \
   --package-path "$DEVHL_BUILD" \
-  --pages-branch "$DEVHL_CR_BRANCH" \
-  --index-path "$DEVHL_DOCS"
+  --skip-existing
