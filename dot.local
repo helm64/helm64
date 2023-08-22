@@ -9,5 +9,9 @@
 #
 
 # Project base location. Adjust to your local GIT repo
-DEVHL_ROOT="${HOME}/github/helm64"
+DEVHL_ROOT="$(pwd)"
 export DEVHL_ROOT
+
+# Helm repository management tool
+DEVHL_CICD_BIN_CR='/opt/helm/bin/cr'
+export DEVHL_CICD_BIN_CR
