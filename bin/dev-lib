@@ -13,5 +13,5 @@ source ./bin/dev-set || exit 1
 
 # Add update commands
 echo 'Download bash library: BashLib64'
-cd "$DEVHL_LIB" &&
-  curl -O "$DEVHL_CICD_BASHLIB64_REPO" || exit 1
+cd "$DEV_LIB" &&
+  curl -O "$DEV_CICD_BASHLIB64_REPO" || exit 1

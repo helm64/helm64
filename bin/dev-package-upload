@@ -6,12 +6,12 @@
 # shellcheck source=SCRIPTDIR/devhl-set
 source ./bin/dev-set || exit 1
 # shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
-source "$DEVHL_CICD_BASHLIB64" || exit 1
+source "$DEV_CICD_BASHLIB64" || exit 1
 
 bl64_msg_all_enable_verbose
-bl64_msg_show_task "upload new releases to github (${DEVHL_CR_REPO})"
-"$DEVHL_CICD_BIN_CR" upload \
-  --git-repo "$DEVHL_CR_REPO" \
-  --owner "$DEVHL_CR_OWNER" \
-  --package-path "$DEVHL_BUILD" \
+bl64_msg_show_task "upload new releases to github (${DEV_CR_REPO})"
+"$DEV_CICD_BIN_CR" upload \
+  --git-repo "$DEV_CR_REPO" \
+  --owner "$DEV_CR_OWNER" \
+  --package-path "$DEV_BUILD" \
   --skip-existing

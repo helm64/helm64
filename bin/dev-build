@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Build helm packages
+#
+
+# shellcheck source=SCRIPTDIR/dev-set
+source ./bin/dev-set || exit 1
+# shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
+source "$DEV_CICD_BASHLIB64" || exit 1
