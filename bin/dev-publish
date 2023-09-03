@@ -31,7 +31,6 @@ function dev_publish_upload_packages() {
     --owner "$DEV_CR_OWNER" \
     --package-path "$DEV_BUILD" \
     --skip-existing \
-    --packages-with-index \
     --make-release-latest true \
     --commit 'feat: publish release packages'
 }
@@ -43,8 +42,7 @@ function dev_publish_update_repository() {
     --owner "$DEV_CR_OWNER" \
     --pages-branch "$DEV_CR_BRANCH" \
     --package-path "$DEV_BUILD" \
-    --index-path "$DEV_DOCS" \
-    --push
+    --index-path "$DEV_DOCS"
 }
 
 #
@@ -52,6 +50,6 @@ function dev_publish_update_repository() {
 #
 
 bl64_msg_all_enable_verbose
-dev_publish_initialize &&
-  dev_publish_upload_packages &&
+# dev_publish_initialize &&
+  # dev_publish_upload_packages &&
   dev_publish_update_repository
