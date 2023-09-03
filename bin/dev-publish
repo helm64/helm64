@@ -30,7 +30,9 @@ function dev_publish_upload_packages() {
     --git-repo "$DEV_CR_REPO" \
     --owner "$DEV_CR_OWNER" \
     --package-path "$DEV_BUILD" \
-    --skip-existing
+    --skip-existing \
+    --packages-with-index \
+    --make-release-latest true
 }
 
 function dev_publish_update_repository() {
