@@ -29,10 +29,7 @@ function dev_publish_upload_packages() {
   "$DEV_CICD_BIN_CR" upload \
     --git-repo "$DEV_CR_REPO" \
     --owner "$DEV_CR_OWNER" \
-    --package-path "$DEV_BUILD" \
-    --skip-existing \
-    --make-release-latest true \
-    --commit 'feat: publish release packages'
+    --package-path "$DEV_BUILD"
 }
 
 function dev_publish_update_repository() {
