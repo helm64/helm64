@@ -50,6 +50,6 @@ function dev_publish_update_repository() {
 #
 
 bl64_msg_all_enable_verbose
-# dev_publish_initialize &&
-  # dev_publish_upload_packages &&
+dev_publish_initialize &&
+  dev_publish_upload_packages &&
   dev_publish_update_repository
