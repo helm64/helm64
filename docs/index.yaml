@@ -2,8 +2,8 @@ apiVersion: v1
 entries:
   helm64-toolbox:
   - apiVersion: v2
-    appVersion: 0.1.0
-    created: "2023-05-26T20:49:35.684771543-03:00"
+    appVersion: 0.2.0
+    created: "2023-09-03T22:03:39.964798167Z"
     dependencies:
     - condition: toolboxOSEnabled
       name: helm64-toolbox-os
@@ -12,14 +12,14 @@ entries:
       name: helm64-toolbox-psql-13
       repository: ""
     - condition: toolboxMongoSH5Enabled
-      name: helm64-toolbox-mongosh-5
+      name: helm64-toolbox-mongodbcli-5
       repository: ""
     - condition: toolboxMongoSH6Enabled
-      name: helm64-toolbox-mongosh-6
+      name: helm64-toolbox-mongodbcli-6
       repository: ""
     description: SysAdmin Toolbox
-    digest: d9a88f042189a9c69fbd25c4811c56cd29b6389f5b9befcd38c29e37f64120b1
-    home: https://github.com/serdigital64/helm64
+    digest: c669f49187c8e703b05c7500069c918d575be2c92d479ab7685afcf40cc78d3b
+    home: https://github.com/helm64/helm64
     keywords:
     - toolbox
     maintainers:
@@ -30,6 +30,6 @@ entries:
     - https://github.com/helm64/helm64-toolbox
     type: application
     urls:
-    - https://github.com/serdigital64/helm64/releases/download/helm64-toolbox-0.2.0/helm64-toolbox-0.2.0.tgz
-    version: 0.2.0
-generated: "2023-05-26T20:49:35.684791436-03:00"
+    - https://github.com/helm64/helm64/releases/download/helm64-toolbox-0.3.0/helm64-toolbox-0.3.0.tgz
+    version: 0.3.0
+generated: "2023-09-03T22:03:39.964813546Z"
