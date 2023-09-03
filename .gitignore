@@ -1,2 +1,5 @@
 .vscode
 *.code-workspace
+.secrets
+.local
+lib/
