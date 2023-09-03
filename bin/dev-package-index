@@ -3,16 +3,51 @@
 # Updated helm repository index with uploaded packages
 #
 
+#
+# Imports
+#
+
 # shellcheck source=SCRIPTDIR/devhl-set
 source ./bin/dev-set || exit 1
 # shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
 source "$DEV_CICD_BASHLIB64" || exit 1
 
-bl64_msg_all_enable_verbose
+#
+# Functions
+#
+
+function dev_publish_initialize() {
+  bl64_check_export 'DEV_CICD_BIN_CR' &&
+    bl64_check_export 'DEV_CR_REPO' &&
+    bl64_check_export 'DEV_CR_OWNER' &&
+    bl64_check_export 'DEV_CR_BRANCH' &&
+    bl64_check_command_search_path "$DEV_CICD_BIN_CR"
+}
+
+function dev_publish_upload_packages() {
+bl64_msg_show_task "upload new releases to github (${DEV_CR_REPO})"
+"$DEV_CICD_BIN_CR" upload \
+  --git-repo "$DEV_CR_REPO" \
+  --owner "$DEV_CR_OWNER" \
+  --package-path "$DEV_BUILD" \
+  --skip-existing
+}
+
+function dev_publish_update_repository() {
 bl64_msg_show_task "update package repository (${DEV_DOCS})"
 "$DEV_CICD_BIN_CR" index \
   --git-repo "$DEV_CR_REPO" \
   --owner "$DEV_CR_OWNER" \
-  --package-path "$DEV_BUILD" \
   --pages-branch "$DEV_CR_BRANCH" \
+  --package-path "$DEV_BUILD" \
   --index-path "$DEV_DOCS"
+}
+
+#
+# Main
+#
+
+bl64_msg_all_enable_verbose
+dev_publish_initialize &&
+  dev_publish_upload_packages &&
+  dev_publish_update_repository
