@@ -1,3 +1,0 @@
-[submodule "src/helm64-toolbox"]
-	path = src/helm64-toolbox
-	url = https://github.com/helm64/helm64-toolbox.git
