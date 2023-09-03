@@ -25,22 +25,22 @@ function dev_publish_initialize() {
 }
 
 function dev_publish_upload_packages() {
-bl64_msg_show_task "upload new releases to github (${DEV_CR_REPO})"
-"$DEV_CICD_BIN_CR" upload \
-  --git-repo "$DEV_CR_REPO" \
-  --owner "$DEV_CR_OWNER" \
-  --package-path "$DEV_BUILD" \
-  --skip-existing
+  bl64_msg_show_task "upload new packages to github (${DEV_BUILD} -> ${DEV_CR_OWNER}/${DEV_CR_REPO})"
+  "$DEV_CICD_BIN_CR" upload \
+    --git-repo "$DEV_CR_REPO" \
+    --owner "$DEV_CR_OWNER" \
+    --package-path "$DEV_BUILD" \
+    --skip-existing
 }
 
 function dev_publish_update_repository() {
-bl64_msg_show_task "update package repository (${DEV_DOCS})"
-"$DEV_CICD_BIN_CR" index \
-  --git-repo "$DEV_CR_REPO" \
-  --owner "$DEV_CR_OWNER" \
-  --pages-branch "$DEV_CR_BRANCH" \
-  --package-path "$DEV_BUILD" \
-  --index-path "$DEV_DOCS"
+  bl64_msg_show_task "update repository catalog (${DEV_CR_OWNER}/${DEV_CR_REPO})"
+  "$DEV_CICD_BIN_CR" index \
+    --git-repo "$DEV_CR_REPO" \
+    --owner "$DEV_CR_OWNER" \
+    --pages-branch "$DEV_CR_BRANCH" \
+    --package-path "$DEV_BUILD" \
+    --index-path "$DEV_DOCS"
 }
 
 #
