@@ -1,6 +1,9 @@
+.env
+.local
+.secrets
 .vscode
 *.code-workspace
-.secrets
-.local
+bin/
+build/
 lib/
 src/
