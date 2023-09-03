@@ -5,13 +5,13 @@
 # * Use to download or install external tools, libraries, etc
 # * Tools and libs should go to lib/
 # * Do not include operations that requires privileged access (i.e. sudo)
-# * Template Version: v1.1.0
+# * Template Version: v1.0.0
 #
 
 # shellcheck source=SCRIPTDIR/devhl-set
-source ./bin/dev-set || exit 1
+source ./bin/devhl-set || exit 1
 
 # Add update commands
 echo 'Download bash library: BashLib64'
 cd "$DEVHL_LIB" &&
-  curl -O "$DEVHL_CICD_BASHLIB64_REPO" || exit 1
+  curl -O https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash || exit 1

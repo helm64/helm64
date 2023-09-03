@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Build helm packages
+#
+
+# shellcheck source=SCRIPTDIR/dev-set
+source ./bin/dev-set || exit 1
+# shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
+source "$DEV_CICD_BASHLIB64" || exit 1
+
+bl64_hlm_setup || exit 1
+
+bl64_msg_all_enable_verbose
+bl64_msg_show_task "create helm package (${DEV_SRC_TOOLBOX})"
+bl64_hlm_run_helm \
+  package \
+  --destination "$DEV_BUILD" \
+  "$DEV_SRC_TOOLBOX"

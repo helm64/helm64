@@ -30,4 +30,5 @@ lib/*
 # Project specific exclusions
 #
 
+# Avoid tracking git repositories inside src/
 src/*
