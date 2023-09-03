@@ -7,7 +7,7 @@
 # Imports
 #
 
-# shellcheck source=SCRIPTDIR/devhl-set
+# shellcheck source=SCRIPTDIR/dev-set
 source ./bin/dev-set || exit 1
 # shellcheck source=SCRIPTDIR/../lib/bashlib64.bash
 source "$DEV_CICD_BASHLIB64" || exit 1
@@ -30,7 +30,9 @@ function dev_publish_upload_packages() {
     --git-repo "$DEV_CR_REPO" \
     --owner "$DEV_CR_OWNER" \
     --package-path "$DEV_BUILD" \
-    --skip-existing
+    --skip-existing \
+    --make-release-latest true \
+    --commit 'feat: publish release packages'
 }
 
 function dev_publish_update_repository() {

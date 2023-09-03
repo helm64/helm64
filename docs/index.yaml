@@ -3,7 +3,7 @@ entries:
   helm64-toolbox:
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2023-09-03T20:41:41.299673595Z"
+    created: "2023-09-03T21:48:49.474954958Z"
     dependencies:
     - condition: toolboxOSEnabled
       name: helm64-toolbox-os
@@ -18,7 +18,7 @@ entries:
       name: helm64-toolbox-mongodbcli-6
       repository: ""
     description: SysAdmin Toolbox
-    digest: 73bc9dc9cc59f0d962ff496f55a2e839a6e7d238dfe460bd5b858c6f0e912cf1
+    digest: c669f49187c8e703b05c7500069c918d575be2c92d479ab7685afcf40cc78d3b
     home: https://github.com/helm64/helm64
     keywords:
     - toolbox
@@ -32,4 +32,4 @@ entries:
     urls:
     - https://github.com/helm64/helm64/releases/download/helm64-toolbox-0.3.0/helm64-toolbox-0.3.0.tgz
     version: 0.3.0
-generated: "2023-09-03T20:41:41.299688063Z"
+generated: "2023-09-03T21:48:49.474968053Z"
