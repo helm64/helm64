@@ -20,6 +20,10 @@ export DEV_CICD_DEBUG
 DEV_CICD_DIST_CR_BIN='cr'
 export DEV_CICD_DIST_CR_BIN
 
+# Subrepo / GitHub CLI
+DEV_CICD_GH="gh"
+export DEV_CICD_GH
+
 # Helm repository info
 DEV_CICD_DIST_CR_REPO='X_REPO_X'
 export DEV_CICD_DIST_CR_REPO
