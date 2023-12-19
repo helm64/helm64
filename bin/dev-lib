@@ -5,13 +5,11 @@
 # * Use to download or install external tools, libraries, etc
 # * Tools and libs should go to lib/
 # * Do not include operations that requires privileged access (i.e. sudo)
-# * Template Version: v1.0.0
+# * Template: 1.0.1
 #
 
-# shellcheck source=SCRIPTDIR/dev-set
+# shellcheck source=bin/dev-set
 source ./bin/dev-set || exit 1
 
-# Add update commands
-echo 'Download bash library: BashLib64'
-cd "$DEV_LIB" &&
-  curl -O https://raw.githubusercontent.com/serdigital64/bashlib64/main/bashlib64.bash || exit 1
+./bin/dev-lib-installer64 &&
+  ./bin/dev-lib-bashlib64

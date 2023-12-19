@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+# Distribute application package
+#
+# * Template: 1.0.0
+#
+
+#
+# Imports
+#
+
+# shellcheck source=bin/dev-set
+source ./bin/dev-set || exit 1
+# shellcheck source=lib/bl64/bashlib64.bash
+source "${DEV_CICD_BASHLIB64}/bashlib64.bash" || exit 1
+
+#
+# Functions
+#
+
+function dev_dist_upload_packages() {
+  bl64_msg_show_task "upload new packages to github (${DEV_PACK_FULL_PATH} -> ${DEV_CICD_DIST_CR_OWNER}/${DEV_CICD_DIST_CR_REPO})"
+  "$DEV_CICD_DIST_CR_BIN" upload \
+    --git-repo "$DEV_CICD_DIST_CR_REPO" \
+    --owner "$DEV_CICD_DIST_CR_OWNER" \
+    --package-path "$DEV_PACK_FULL_PATH"
+}
+
+function dev_dist_update_repository() {
+  bl64_msg_show_task "update repository catalog (${DEV_CICD_DIST_CR_OWNER}/${DEV_CICD_DIST_CR_REPO})"
+  "$DEV_CICD_DIST_CR_BIN" index \
+    --git-repo "$DEV_CICD_DIST_CR_REPO" \
+    --owner "$DEV_CICD_DIST_CR_OWNER" \
+    --pages-branch "$DEV_CICD_DIST_CR_BRANCH" \
+    --package-path "$DEV_PACK_FULL_PATH" \
+    --index-path "$DEV_DOCS"
+}
+
+function dev_dist_dist() {
+    dev_dist_upload_packages &&
+    dev_dist_update_repository
+}
+
+#
+# Main
+#
+
+[[ -n "$DEV_CICD_DEBUG" ]] && bl64_dbg_all_enable
+
+bl64_check_export 'DEV_CICD_DIST_CR_BIN' &&
+  bl64_check_export 'DEV_CICD_DIST_CR_REPO' &&
+  bl64_check_export 'DEV_CICD_DIST_CR_OWNER' &&
+  bl64_check_export 'DEV_CICD_DIST_CR_BRANCH' &&
+  bl64_check_command_search_path "$DEV_CICD_DIST_CR_BIN" &&
+  bl64_check_export 'DEV_PACK_FULL_PATH' ||
+  exit $?
+
+bl64_msg_all_enable_verbose
+bl64_msg_show_batch_start 'dist-app'
+bl64_msg_show_task "distribute application package (${DEV_PACK_FULL_PATH})"
+dev_dist_dist
+bl64_msg_show_batch_finish $? 'dist-app'
