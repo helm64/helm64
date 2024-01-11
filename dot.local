@@ -5,13 +5,29 @@
 #
 # * This file should be excluded from GIT
 # * Source before .env
-# * Template version: 1.0.0
+# * Template version: 1.1.0
 #
 
 # Project base location. Adjust to your local GIT repo
 DEV_ROOT="$(pwd)"
 export DEV_ROOT
 
+# CICD / Debug flag for 'bin/' scripts
+DEV_CICD_DEBUG=''
+export DEV_CICD_DEBUG
+
 # Helm repository management tool
-DEV_CICD_BIN_CR='/opt/helm/bin/cr'
-export DEV_CICD_BIN_CR
+DEV_CICD_DIST_CR_BIN='cr'
+export DEV_CICD_DIST_CR_BIN
+
+# Subrepo / GitHub CLI
+DEV_CICD_GH="gh"
+export DEV_CICD_GH
+
+# Helm repository info
+DEV_CICD_DIST_CR_REPO='X_REPO_X'
+export DEV_CICD_DIST_CR_REPO
+DEV_CICD_DIST_CR_OWNER='X_OWNER_X'
+export DEV_CICD_DIST_CR_OWNER
+DEV_CICD_DIST_CR_BRANCH='X_BRANCH_X'
+export DEV_CICD_DIST_CR_BRANCH

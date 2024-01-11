@@ -23,12 +23,12 @@ lib/*
 # Local variables
 .local
 
-# Keep placeholder for empty directories
-!/**/.gitkeep
-
 #
 # Project specific exclusions
 #
 
 # Avoid tracking git repositories inside src/
 src/*
+
+# Keep placeholder for empty directories
+!/**/.gitkeep

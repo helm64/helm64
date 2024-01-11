@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# Pack application for delivery
+#
+# * Use to create a distributable package of the application
+# * Template: 2.1.0
+#
+
+#
+# Imports
+#
+
+# shellcheck source=bin/dev-set
+source ./bin/dev-set || exit 1
+# shellcheck source=lib/bl64/bashlib64.bash
+source "${DEV_CICD_BASHLIB64}/bashlib64.bash" || exit 1
+
+#
+# Functions
+#
+
+function dev_pack_create() {
+  local source=''
+  local destination_mode='0755'
+
+  bl64_msg_show_task "create distributable packages (${DEV_PACK_FULL_PATH})"
+  [[ -d "$DEV_PACK_FULL_PATH" ]] && bl64_fs_rm_full
+  bl64_fs_create_dir "$destination_mode" "$BL64_VAR_DEFAULT" "$BL64_VAR_DEFAULT" "$DEV_PACK_FULL_PATH" &&
+    cd "$DEV_SRC" || return $?
+  for source in *; do
+    bl64_msg_show_subtask "pack helm module (${source})"
+    bl64_hlm_run_helm \
+      package \
+      --destination "$DEV_PACK_FULL_PATH" \
+      "$source" ||
+      return $?
+  done
+}
+
+#
+# Main
+#
+
+[[ -n "$DEV_CICD_DEBUG" ]] && bl64_dbg_all_enable
+
+bl64_hlm_setup &&
+  bl64_check_export 'DEV_PACK_FULL_PATH' ||
+  exit $?
+
+bl64_msg_all_enable_verbose
+bl64_msg_show_batch_start 'pack-app'
+dev_pack_create
+bl64_msg_show_batch_finish $? 'pack-app'
